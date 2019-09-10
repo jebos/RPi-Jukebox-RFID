@@ -203,7 +203,7 @@ if [ "$CARDID" ]; then
             ;;
         $SHUTDOWNAFTER5)
             # shutdown after -v minutes
-            $PATHDATA/playout_controls.sh -c=shutdownafter -v=5
+            $PATHDATA/playout_controls.sh -c=shutdownafter -v=1
             ;;
         $SHUTDOWNAFTER15)
             # shutdown after -v minutes
