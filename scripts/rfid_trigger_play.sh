@@ -368,7 +368,7 @@ if [ ! -z "$FOLDER" -a ! -z ${FOLDER+x} -a -d "${AUDIOFOLDERSPATH}/${FOLDER}" ];
             if [ $STATE == "play" ]
             then
                 if [ "$DEBUG" == "true" ]; then echo "MPD playing, pausing the player" >> $PATHDATA/../logs/debug.log; fi
-                sudo $PATHDATA/playout_controls.sh -c=playerpause &>/dev/null
+                #sudo $PATHDATA/playout_controls.sh -c=playerpause &>/dev/null
             else
                 if [ "$DEBUG" == "true" ]; then echo "MPD not playing, start playing" >> $PATHDATA/../logs/debug.log; fi
                 sudo $PATHDATA/playout_controls.sh -c=playerplay &>/dev/null

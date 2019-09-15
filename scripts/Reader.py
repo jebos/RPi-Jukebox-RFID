@@ -74,12 +74,10 @@ class Mfrc522Reader(object):
 
 class Rdm6300Reader:
     def __init__(self):
-        print "halllllo"
         device = '/dev/serial0'
         baudrate = 9600
         ser_timeout = 1.0
         self.last_card_id = ''
-        self.nocard_counter = 0
         try:
             self.rfid_serial = serial.Serial(device, baudrate, timeout=ser_timeout)
         except serial.SerialException as e:
@@ -107,22 +105,14 @@ class Rdm6300Reader:
                         if len(card_id) == 12 and card_id != self.last_card_id:
                             self.last_card_id = card_id
                             self.rfid_serial.reset_input_buffer()
-                            self.nocard_counter = 0
                             return self.last_card_id
 
                         else:   # wrong UUID length or already send that UUID last time
                             self.rfid_serial.reset_input_buffer()
-#                    else:
-                        # eval 1 time per second
-
-                        #if self.nocard_counter == 10:
-                         #   self.last_card_id = "stop"
-                       # else:
-                        #    self.nocard_counter += 1
-                         #   self.last_card_id = "pause"
-    
-                       # self.rfid_serial.reset_input_buffer()
-                        #return self.last_card_id
+                    
+                    self.last_card_id = "1"
+                    self.rfid_serial.reset_input_buffer()
+                    return self.last_card_id
 
                 except ValueError as ve:
                     print(ve)
