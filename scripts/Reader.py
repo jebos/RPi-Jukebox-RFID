@@ -74,7 +74,7 @@ class Mfrc522Reader(object):
 
 class Rdm6300Reader:
     def __init__(self):
-        
+        print "halllllo"
         device = '/dev/serial0'
         baudrate = 9600
         ser_timeout = 1.0
@@ -112,17 +112,17 @@ class Rdm6300Reader:
 
                         else:   # wrong UUID length or already send that UUID last time
                             self.rfid_serial.reset_input_buffer()
-                    else:
+#                    else:
                         # eval 1 time per second
 
-                        if self.nocard_counter == 10:
-                            self.last_card_id = "stop"
-                        else:
-                            self.nocard_counter += 1
-                            self.last_card_id = "pause"
+                        #if self.nocard_counter == 10:
+                         #   self.last_card_id = "stop"
+                       # else:
+                        #    self.nocard_counter += 1
+                         #   self.last_card_id = "pause"
     
-                        self.rfid_serial.reset_input_buffer()
-                        return self.last_card_id
+                       # self.rfid_serial.reset_input_buffer()
+                        #return self.last_card_id
 
                 except ValueError as ve:
                     print(ve)
@@ -136,6 +136,7 @@ class Rdm6300Reader:
 
 class Reader(object):
     def __init__(self):
+ #       print "Hallo"
         path = os.path.dirname(os.path.realpath(__file__))
         if not os.path.isfile(path + '/deviceName.txt'):
             sys.exit('Please run RegisterDevice.py first')
